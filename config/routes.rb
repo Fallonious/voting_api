@@ -1,23 +1,32 @@
 Rails.application.routes.draw do
-  get 'votes/create'
+  namespace :api do
+    namespace :v1 do
+      resources :candidates, defaults: { :format => 'json' }
+    end
+  end
 
-  get 'votes/index'
+  namespace :api do
+    namespace :v1 do
+      resources :voters, defaults: { :format => 'json' }
+    end
+  end
 
-  get 'voters/create'
+  namespace :api do
+    namespace :v1 do
+      resources :votes, defaults: { :format => 'json' }
+    end
+  end
 
-  get 'voters/show'
 
-  get 'voters/update'
-
-  get 'candidates/index'
-
-  get 'candidates/show'
+  resources :candidates
+  resources :voters
+  resources :vote
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+   #root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
