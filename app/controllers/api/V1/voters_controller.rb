@@ -17,6 +17,10 @@ class Api::V1::VotersController < ApplicationController
     render json: @voter
   end
 
+  def index
+    render json: Voter.all
+  end
+
   def update
   end
 

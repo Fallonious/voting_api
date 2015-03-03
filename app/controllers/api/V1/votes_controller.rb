@@ -1,8 +1,13 @@
 class Api::V1::VotesController < ApplicationController
-
+  respond_to :json
 
   def create
     @vote = Vote.new(vote_params)
+    if vote.save
+      redirect_to api_v1_votes_path, notice: 'Vote was successfully created.'
+    else
+      render :new
+    end
   end
 
   def index
