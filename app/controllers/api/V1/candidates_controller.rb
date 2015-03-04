@@ -6,14 +6,8 @@ class Api::V1::CandidatesController < ApplicationController
   end
 
   def create
-    @candidate = Candidate.new(candidate_params)
-
-    if @candidate.save
-      render json: @candidate
-    else
-      render json: "Invalid parameters"
-    end
-
+    @candidate = Candidate.create(candidate_params)
+    render json: @candidate
   end
 
   def show
